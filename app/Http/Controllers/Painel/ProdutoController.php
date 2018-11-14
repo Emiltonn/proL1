@@ -10,6 +10,7 @@ use App\Http\Requests\Painel\ProductFormRequest;
 class ProdutoController extends Controller
 {
     private $product;
+    private $totalPage = 3;
     public function __construct(Product $product){
         $this->product = $product;
     }
@@ -22,7 +23,7 @@ class ProdutoController extends Controller
     {
         $title = 'Listagem dos produtos';
 
-        $products = $this->product->all();
+        $products = $this->product->paginate($this->totalPage); //paginate - paginação limitar o numeros de resultados por tela
 
         return view('painel.products.index', compact('products','title'));
     }
