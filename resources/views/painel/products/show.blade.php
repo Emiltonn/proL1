@@ -12,15 +12,18 @@
 
 <hr>
 @if( isset($errors) && count($errors) > 0)
-<div class="alert-danger">
-    @foreach( $errors -> all() as $error)
-    <p>{{$error}}</p>
-    @endforeach    
-</div>
+    <div class="alert-danger">
+        @foreach( $errors -> all() as $error)
+            <p>{{$error}}</p>
+        @endforeach    
+    </div>
 @endif
 
-{!!Form::open(['route' => ['produtos.destroy', $product->id, 'method' => 'DELETE']]) !!}
+{!! Form::open(['route' => ['produtos.destroy', $product->id], 'method' => 'DELETE' ]) !!}
     {!! Form::submit("Deletar Produto: $product->name", ['class' => 'btn btn-danger']) !!}
 {!! Form::close() !!}
 
 @endsection
+
+
+
